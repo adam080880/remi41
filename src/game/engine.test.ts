@@ -151,6 +151,23 @@ describe('game rules', () => {
   })
 })
 
+describe('winners', () => {
+  it('lets everyone tied on the highest score win when the deck runs out', () => {
+    const state = newRound({ random: seeded(1) })
+    const hands = [
+      [card('spade', 'A'), card('spade', 'K'), card('spade', '2'), card('club', '3'), card('heart', '2')],
+      [card('heart', 'A'), card('heart', 'K'), card('heart', '3'), card('club', '4')],
+      [card('heart', '4'), card('club', '5'), card('spade', '6'), card('diamond', '7')],
+      [card('heart', '5'), card('club', '6'), card('spade', '7'), card('diamond', '8')],
+    ]
+    const over = discard({ ...state, hands, deck: [], current: 0, phase: 'discard' }, 'heart-2')
+    expect(handScore(over.hands[0], 'ketat')).toBe(20)
+    expect(handScore(over.hands[1], 'ketat')).toBe(20)
+    expect(over.endReason).toBe('deck-empty')
+    expect(over.winners).toEqual([0, 1])
+  })
+})
+
 describe('bots', () => {
   it('take the card that completes a 41', () => {
     const state = newRound({ random: seeded(3) })

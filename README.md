@@ -10,7 +10,7 @@ Tiap pemain pegang 4 kartu. Di giliranmu, ambil satu kartu dari dek atau kartu b
 
 Nilai kartu: As 11, K/Q/J 10, sisanya sesuai angka.
 
-Ronde langsung dimenangkan begitu skor tangan pas 41 setelah buang kartu. Skor nggak boleh lebih dari 41, jadi kartu yang bikin skor lewat 41 kalau dibuang nggak bisa dipilih. Kalau dek habis, skor tertinggi yang menang. Skor tiap ronde dijumlahkan ke papan skor.
+Ronde langsung dimenangkan begitu skor tangan pas 41 setelah buang kartu. Skor nggak boleh lebih dari 41, jadi kartu yang bikin skor lewat 41 kalau dibuang nggak bisa dipilih. Kalau dek habis, skor tertinggi yang menang. Kalau skor tertingginya sama, semuanya menang. Skor tiap ronde dijumlahkan ke papan skor.
 
 ## Mode
 

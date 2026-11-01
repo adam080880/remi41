@@ -171,7 +171,7 @@ function Rules({ mode, onClose }: { mode: GameMode; onClose: () => void }) {
           <li>Kartu yang baru diambil dari buangan nggak boleh langsung dibuang lagi.</li>
           <li>Begitu skor tangan pas {WIN_SCORE} setelah buang kartu, ronde langsung dimenangkan.</li>
           <li>Skor tangan nggak boleh lebih dari {WIN_SCORE}. Kartu yang bikin skor lewat {WIN_SCORE} kalau dibuang nggak bisa dipilih.</li>
-          <li>Kalau dek habis, skor tertinggi yang menang. Skor tiap ronde dijumlahkan ke papan skor.</li>
+          <li>Kalau dek habis, skor tertinggi yang menang. Kalau skor tertingginya sama, semuanya menang. Skor tiap ronde dijumlahkan ke papan skor.</li>
         </ul>
         <button className="btn primary" onClick={onClose}>Paham</button>
       </div>
@@ -206,8 +206,7 @@ function RoundResult({
 }) {
   const score = (player: number) => handScore(game.hands[player], game.mode)
   const winnerNames = game.winners.map((i) => names[i]).join(' & ')
-  const soloTitle = game.winners.length > 1 ? 'Seri!' : 'Kamu menang!'
-  const title = solo && game.winners.includes(0) ? soloTitle : `${winnerNames} menang`
+  const title = solo && game.winners.length === 1 && game.winners[0] === 0 ? 'Kamu menang!' : `${winnerNames} menang`
   const order = names.map((_, i) => i).sort((a, b) => score(b) - score(a))
   return (
     <div className="overlay">
